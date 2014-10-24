@@ -118,6 +118,38 @@ public class VisualiseurDeFormes extends JFrame
 			//m_formes.clear();
 		}
 	}
+	
+	class BoutonResetAction implements ActionListener
+	{
+		/**
+		 * Référence l'application qui a créé ce bouton.
+		 */
+		private VisualiseurDeFormes m_visualiseur;
+		
+		/**
+		 * Constructeur.
+		 * @param visu est l'application relié à ce bouton.
+		 */
+		BoutonResetAction( VisualiseurDeFormes visu )
+		{
+			m_visualiseur = visu;
+		 }
+		 
+		/**
+		 * Crée un nouveau cercle de coordonnées et rayon aléatoire.
+		 * suite à l'action [e].
+		 * 
+		 * @param e l'action qui a déclenchée l'appel à cette méthode.
+		 */
+		public void actionPerformed( ActionEvent e)
+		{
+			m_formes.clear();		
+			m_visualiseur.repaint();
+			
+			
+		}
+	}
+	
 	public static String str= "prem";
 	/**
 	 * Constructeur par défaut. 
@@ -163,7 +195,10 @@ public class VisualiseurDeFormes extends JFrame
 		b2.addActionListener(action_rectangle);
 		m_panneau_boutons.add( b2 );
 		
+		BoutonResetAction action_reset = new BoutonResetAction(this);
 		JButton b3 = new JButton("Reset");
+		b3.addActionListener(action_reset);
+		m_panneau_boutons.add( b3 );
 		
 		// Indique ce qu'il faut faire si on clic sur "fermer la fenetre".
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
