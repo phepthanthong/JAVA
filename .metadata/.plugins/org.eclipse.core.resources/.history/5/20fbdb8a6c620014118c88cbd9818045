@@ -54,6 +54,20 @@ public class VisualiseurDeFormes extends JFrame
 	class BoutonCercleAction implements ActionListener
 	{
 		/**
+		 * Référence l'application qui a créé ce bouton.
+		 */
+		private VisualiseurDeFormes m_visualiseur;
+		
+		/**
+		 * Constructeur.
+		 * @param visu est l'application relié à ce bouton.
+		 */
+		BoutonCercleAction( VisualiseurDeFormes visu )
+		{
+			m_visualiseur = visu;
+		 }
+		 
+		/**
 		 * Crée un nouveau cercle de coordonnées et rayon aléatoire.
 		 * suite à l'action [e].
 		 * 
@@ -61,18 +75,32 @@ public class VisualiseurDeFormes extends JFrame
 		 */
 		public void actionPerformed( ActionEvent e)
 		{
-			Random r = getRandom();
+			Random r = m_visualiseur.getRandom();
 			Cercle c = new Cercle(
 				r.nextInt( 200 ),
 				r.nextInt( 200 ),
 			    r.nextInt( 40 )+ 20 );
-			getFormes().add( c );
-			repaint();
+			m_visualiseur.getFormes().add( c );
+			m_visualiseur.repaint();
 		}
 	}
 	
 	class BoutonRectangleAction implements ActionListener
 	{
+		/**
+		 * Référence l'application qui a créé ce bouton.
+		 */
+		private VisualiseurDeFormes m_visualiseur;
+		
+		/**
+		 * Constructeur.
+		 * @param visu est l'application relié à ce bouton.
+		 */
+		BoutonRectangleAction( VisualiseurDeFormes visu )
+		{
+			m_visualiseur = visu;
+		 }
+		 
 		/**
 		 * Crée un nouveau rectangle de coordonnées et rayon aléatoire.
 		 * suite à l'action [e].
@@ -81,10 +109,10 @@ public class VisualiseurDeFormes extends JFrame
 		 */
 		public void actionPerformed( ActionEvent e)
 		{
-			Random r = getRandom();
+			Random r = m_visualiseur.getRandom();
 			Rectangle o = new Rectangle(r.nextInt(300),r.nextInt(300),r.nextInt(100)+20,r.nextInt(100)+20);
-			getFormes().add(o);
-			repaint();			
+			m_visualiseur.getFormes().add(o);
+			m_visualiseur.repaint();			
 		}
 	}
 	
@@ -118,9 +146,19 @@ public class VisualiseurDeFormes extends JFrame
 	
 	class BoutonAleatoireAction implements ActionListener
 	{
-		private BoutonRectangleAction br;
-		private BoutonCercleAction bc;
+		/**
+		 * Référence l'application qui a créé ce bouton.
+		 */
+		private VisualiseurDeFormes m_visualiseur;
 		
+		/**
+		 * Constructeur.
+		 * @param visu est l'application relié à ce bouton.
+		 */
+		BoutonAleatoireAction( VisualiseurDeFormes visu )
+		{
+			m_visualiseur = visu;
+		 }
 		 
 		/**
 		 * Faire un bouton qui efface toutes les formes lorsqu’on appuie dessus.
@@ -129,20 +167,14 @@ public class VisualiseurDeFormes extends JFrame
 		 * @param br l'action de dessiner aleatoirement un rectangle
 		 * @param bc l'action de dessiner aleatoirement un cercle
 		 */
-		public void actionPerformed( ActionEvent e )
+		public void actionPerformed( ActionEvent e, BoutonRectangleAction br, BoutonCercleAction bc )
 		{
-			Random r = getRandom();
-			int alea = r.nextInt(2);
-			if (alea == 0)
-			{
-				br = new BoutonRectangleAction();
+			Random (int) r = m_visualiseur.getRandom();
+			
+			if (r>10)
 				br.actionPerformed(e);
-			}
 			else 
-			{
-				bc = new BoutonCercleAction();
-				bc.actionPerformed(e);
-			}
+				bc.actionPerformed(e);					
 		}
 	}
 	public static String str= "prem";
@@ -180,12 +212,12 @@ public class VisualiseurDeFormes extends JFrame
 		getContentPane().add( m_panneau_boutons, BorderLayout.SOUTH );
 		getContentPane().add( m_panneau_dessin, BorderLayout.CENTER );
 		
-		BoutonCercleAction action_cercle = new BoutonCercleAction();
+		BoutonCercleAction action_cercle = new BoutonCercleAction( this );
 		JButton b1 = new JButton( "Cercle" );
 		b1.addActionListener( action_cercle );
 		m_panneau_boutons.add( b1 );
 		
-		BoutonRectangleAction action_rectangle = new BoutonRectangleAction();
+		BoutonRectangleAction action_rectangle = new BoutonRectangleAction(this);
 		JButton b2 = new JButton("Rectangle");
 		b2.addActionListener(action_rectangle);
 		m_panneau_boutons.add( b2 );
@@ -194,11 +226,6 @@ public class VisualiseurDeFormes extends JFrame
 		JButton b3 = new JButton("Reset");
 		b3.addActionListener(action_reset);
 		m_panneau_boutons.add( b3 );
-		
-		BoutonAleatoireAction action_alea = new BoutonAleatoireAction();
-		JButton b4 = new JButton("Aleatoire");
-		b4.addActionListener(action_alea);
-		m_panneau_boutons.add( b4 );
 		
 		// Indique ce qu'il faut faire si on clic sur "fermer la fenetre".
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -219,7 +246,7 @@ public class VisualiseurDeFormes extends JFrame
 		getContentPane().add( m_panneau_boutons, BorderLayout.SOUTH );
 		getContentPane().add( m_panneau_dessin, BorderLayout.CENTER );
 		BoutonCercleAction action_cercle 
-			= new BoutonCercleAction();
+			= new BoutonCercleAction( this );
 		JButton b1 = new JButton( "Cercle" );
 		b1.addActionListener( action_cercle );
 		m_panneau_boutons.add( b1 );
