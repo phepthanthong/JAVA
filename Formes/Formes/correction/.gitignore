@@ -10,3 +10,6 @@
 /ZoneDeDessin.class
 /VisualiseurDeFormes$BoutonResetAction.class
 /VisualiseurDeFormes$BoutonAleatoireAction.class
+/FormeColoree.class
+/VisualiseurDeFormes$BoutonChangerCouleurAction.class
+/RectangleParDragSouris.class

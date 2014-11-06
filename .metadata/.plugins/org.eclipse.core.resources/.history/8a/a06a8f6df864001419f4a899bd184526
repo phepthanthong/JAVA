@@ -1,0 +1,9 @@
+import java.awt.Graphics;
+
+/**
+ * @author Hieu
+ *
+ */
+public abstract class FormeColoree {
+	public abstract void redessiner (Graphics g);
+}

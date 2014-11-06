@@ -1,0 +1,17 @@
+import java.awt.event.*;
+
+/**
+ * @author Hieu
+ *
+ */
+public class RectangleParDragSouris extends MouseInputAdapter {
+	public void mousePressed (MouseEvent e)
+	{
+		
+	}
+
+	public void mouseReleased (MouseEvent e)
+	{
+		
+	}
+}

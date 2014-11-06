@@ -65,7 +65,7 @@ public class VisualiseurDeFormes extends JFrame
 			Cercle c = new Cercle(
 				r.nextInt( 200 ),
 				r.nextInt( 200 ),
-			    r.nextInt( 40 )+ 20 );
+			    r.nextInt( 40 )+ 20, Color.pink);
 			getFormes().add( c );
 			repaint();
 		}
@@ -82,7 +82,7 @@ public class VisualiseurDeFormes extends JFrame
 		public void actionPerformed( ActionEvent e)
 		{
 			Random r = getRandom();
-			Rectangle o = new Rectangle(r.nextInt(300),r.nextInt(300),r.nextInt(100)+20,r.nextInt(100)+20);
+			Rectangle o = new Rectangle(r.nextInt(300),r.nextInt(300),r.nextInt(100)+20,r.nextInt(100)+20, Color.yellow);
 			getFormes().add(o);
 			repaint();			
 		}
@@ -145,6 +145,30 @@ public class VisualiseurDeFormes extends JFrame
 			}
 		}
 	}
+	
+	class BoutonChangerCouleurAction implements ActionListener
+	{
+		
+		public void actionPerformed( ActionEvent e )
+		{
+			Vector <Color> couleur = new Vector<Color>();
+			couleur.add(Color.blue);
+			couleur.add(Color.green);
+			couleur.add(Color.orange);
+			couleur.add(Color.pink);
+			couleur.add(Color.red);
+			
+			Random r = getRandom();
+			int pos = r.nextInt( couleur.size() );
+			
+			if( !m_formes.isEmpty() )	
+				getLastForme().setColour( couleur.elementAt(pos) );
+			
+			repaint();
+		}
+	}
+	
+	
 	public static String str= "prem";
 	/**
 	 * Constructeur par défaut. 
@@ -168,9 +192,9 @@ public class VisualiseurDeFormes extends JFrame
 			break;
 		}
 		
-		m_formes = new Vector();
+		m_formes = new Vector<FormeColoree>();
 		m_random = new Random();
-		setPreferredSize( new Dimension( 400, 300 ) );
+		setPreferredSize( new Dimension( 700, 500 ) );
 		setLayout( new BorderLayout() );
 		m_panneau_dessin = new ZoneDeDessin();
 		m_panneau_dessin.setFormes( m_formes );
@@ -199,6 +223,11 @@ public class VisualiseurDeFormes extends JFrame
 		JButton b4 = new JButton("Aleatoire");
 		b4.addActionListener(action_alea);
 		m_panneau_boutons.add( b4 );
+		
+		BoutonChangerCouleurAction action_changeCouleur = new BoutonChangerCouleurAction();
+		JButton b5 = new JButton( "Couleur" );
+		b5.addActionListener( action_changeCouleur );
+		m_panneau_boutons.add( b5 );
 		
 		// Indique ce qu'il faut faire si on clic sur "fermer la fenetre".
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -243,7 +272,7 @@ public class VisualiseurDeFormes extends JFrame
 	/**
 	 * @return le vecteur des formes
 	 */
-	public Vector getFormes() {
+	public Vector<FormeColoree> getFormes() {
 		return m_formes;
 	}
 
@@ -252,6 +281,14 @@ public class VisualiseurDeFormes extends JFrame
 	 */
 	public Random getRandom() {
 		return m_random;
+	}
+	
+	public FormeColoree getLastForme()
+	{
+		if ( !m_formes.isEmpty() )
+			return (FormeColoree) m_formes.lastElement();
+		else 
+			return null;
 	}
 
 }
