@@ -27,12 +27,9 @@ public class RectangleParDragSouris extends MouseInputAdapter {
 
 	public void mouseReleased (MouseEvent e)
 	{
-		if ( !v_rectangle.isEmpty() )
-		{
-			Rectangle last_r = v_rectangle.lastElement();
-			m_visualiseur.getFormes().add(last_r);
-			m_visualiseur.repaint();
-		}
+		Rectangle last_r = v_rectangle.lastElement();
+		 m_visualiseur.getFormes().add(last_r);
+		m_visualiseur.repaint();		
 	}
 	
 	public void mouseDragged(MouseEvent e)

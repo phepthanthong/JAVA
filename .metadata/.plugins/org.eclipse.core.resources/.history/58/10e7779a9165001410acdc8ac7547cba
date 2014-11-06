@@ -173,7 +173,6 @@ public class VisualiseurDeFormes extends JFrame
 					((Forme)m_formes.lastElement()).setCouleur(col);
 				}
 			}
-			repaint();
 			
 			
 		}

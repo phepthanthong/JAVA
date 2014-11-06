@@ -159,23 +159,13 @@ public class VisualiseurDeFormes extends JFrame
 			couleur.add(Color.red);
 			
 			Random r = getRandom();
-			int pos = r.nextInt( couleur.size() ); zAZE
+			int pos = r.nextInt( couleur.size() );
 			
 			if( !m_formes.isEmpty() )	
 				getLastForme().setColour( couleur.elementAt(pos) );
 			
 			repaint(); */
-			if (!m_formes.isEmpty())
-			{
-				Color col = JColorChooser.showDialog(null,"Choisir une couleur",Color.black);
-				if (col != null)
-				{
-					((Forme)m_formes.lastElement()).setCouleur(col);
-				}
-			}
-			repaint();
-			
-			
+			Color col = JColorChooser.showDialog(null,"Choisir une couleur",Color.black);
 		}
 	}
 	

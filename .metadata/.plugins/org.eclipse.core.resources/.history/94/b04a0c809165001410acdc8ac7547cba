@@ -170,10 +170,9 @@ public class VisualiseurDeFormes extends JFrame
 				Color col = JColorChooser.showDialog(null,"Choisir une couleur",Color.black);
 				if (col != null)
 				{
-					((Forme)m_formes.lastElement()).setCouleur(col);
+					m_formes.lastElement().setColour(c);
 				}
 			}
-			repaint();
 			
 			
 		}

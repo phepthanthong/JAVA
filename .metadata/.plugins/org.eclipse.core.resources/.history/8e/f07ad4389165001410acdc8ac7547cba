@@ -4,5 +4,4 @@ import java.awt.*;
 public interface Forme
 {
 	public void redessiner( Graphics g );
-	public void setCouleur(Color c);
 }
