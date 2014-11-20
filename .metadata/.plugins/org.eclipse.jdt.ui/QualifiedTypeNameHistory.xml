@@ -5,4 +5,5 @@
 <fullyQualifiedTypeName name="java.awt.event.MouseEvent"/>
 <fullyQualifiedTypeName name="javax.swing.event.MouseInputAdapter"/>
 <fullyQualifiedTypeName name="java.util.Vector"/>
+<fullyQualifiedTypeName name="java.lang.Package"/>
 </qualifiedTypeNameHistroy>

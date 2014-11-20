@@ -1,0 +1,48 @@
+import javax.swing.*;
+
+import java.awt.*;
+import java.awt.event.*;
+
+/**
+ * @author Hieu
+ *
+ */
+public class Visualiseur extends JFrame {
+
+	/**
+	 * 
+	 */
+	public Visualiseur() {
+		
+		
+	}
+	
+	public void initComponent()
+	{
+		JMenuBar mb = new JMenuBar();
+		
+		JMenu fichier = new JMenu("Fichier");
+		JMenu edition = new JMenu("Edition");
+		JMenu aide = new JMenu("Aide");
+		
+		JMenuItem ouvrir = new JMenuItem("Ouvrir");
+		JMenuItem sauvegarde = new JMenuItem("Sauvegarder");
+		JMenuItem quitter = new JMenuItem("Quitter");
+		
+		JMenuItem copier = new JMenuItem("Copier");
+		JMenuItem coller = new JMenuItem("Coller");
+		
+		JMenuItem apropos = new JMenuItem("A Propos");
+		
+		
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		Visualiseur visu = new Visualiseur();
+		visu.setVisible(true);
+	}
+
+}

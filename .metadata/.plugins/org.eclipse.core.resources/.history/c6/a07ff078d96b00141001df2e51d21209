@@ -1,0 +1,56 @@
+
+/**
+ * @author Hieu
+ *
+ */
+public class Case {
+	
+	protected int _x, _y;
+	
+	protected boolean bonEndroit;
+
+	/**
+	 * @return the _x
+	 */
+	protected final int get_x() {
+		return _x;
+	}
+
+	/**
+	 * @param _x the _x to set
+	 */
+	protected final void set_x(int x) {
+		this._x = x;
+	}
+
+	/**
+	 * @return the _y
+	 */
+	protected final int get_y() {
+		return _y;
+	}
+
+	/**
+	 * @param _y the _y to set
+	 */
+	protected final void set_y(int y) {
+		this._y = y;
+	}
+
+	/**
+	 * @return the bonEndroit
+	 */
+	protected final boolean isBonEndroit() {
+		return bonEndroit;
+	}
+
+	/**
+	 * @param bonEndroit the bonEndroit to set
+	 */
+	protected final void setBonEndroit(boolean bonEndroit) {
+		this.bonEndroit = bonEndroit;
+	}
+	
+	
+	
+}

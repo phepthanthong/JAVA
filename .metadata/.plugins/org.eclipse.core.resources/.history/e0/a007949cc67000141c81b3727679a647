@@ -1,0 +1,23 @@
+import javax.swing.*;
+
+/**
+ * @author Hieu
+ *
+ */
+public class Visualiseur {
+
+	/**
+	 * 
+	 */
+	public Visualiseur() {
+		
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+
+	}
+
+}

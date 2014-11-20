@@ -1,0 +1,88 @@
+import javax.swing.*;
+
+import java.awt.*;
+import java.awt.event.*;
+
+/**
+ * @author Hieu
+ *
+ */
+public class Visualiseur extends JFrame {
+
+	/**
+	 * 
+	 */
+	public Visualiseur() {
+		
+		initComponent();
+	}
+	
+	public void initComponent()
+	{
+		this.setSize(800,500);
+		this.setTitle("Traitement des images");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLocationRelativeTo(null);
+				
+		JMenuBar mb = new JMenuBar();
+		
+		JMenu fichier = new JMenu("Fichier");
+		JMenu edition = new JMenu("Edition");
+		JMenu aide = new JMenu("Aide");
+		
+		JMenuItem ouvrir = new JMenuItem("Ouvrir");
+		JMenuItem sauvegarder = new JMenuItem("Sauvegarder");
+		JMenuItem quitter = new JMenuItem("Quitter");
+		
+		JMenuItem copier = new JMenuItem("Copier");
+		JMenuItem coller = new JMenuItem("Coller");
+		JMenuItem outils = new JMenuItem("Outils");
+		
+		JMenuItem choix1 = new JMenuItem("Choix 1");
+		JMenuItem choix2 = new JMenuItem("Choix 2");
+		
+		JMenuItem apropos = new JMenuItem("A Propos");
+		
+		
+		fichier.add(ouvrir);
+		fichier.add(sauvegarder);
+		fichier.add(quitter);
+		quitter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e)
+			{
+				System.exit(0);
+			}
+		});
+			
+		edition.add(copier);
+		edition.add(coller);
+		
+		outils.add(choix1);
+		outils.add(choix2);		
+		ButtonGroup bg = new ButtonGroup();
+		bg.add(choix1);
+		bg.add(choix2);		
+		outils.add(choix1);
+		outils.add(choix2);
+		
+		edition.add(outils);
+		
+		aide.add(apropos);
+		
+		mb.add(fichier);
+		mb.add(edition);
+		mb.add(aide);
+		
+		this.setJMenuBar(mb);
+		this.setVisible(true);
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		Visualiseur visu = new Visualiseur();
+		
+	}
+
+}

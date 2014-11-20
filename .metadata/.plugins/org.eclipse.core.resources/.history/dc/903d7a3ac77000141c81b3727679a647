@@ -1,0 +1,25 @@
+import javax.swing.*;
+import java.awt.*;
+
+/**
+ * @author Hieu
+ *
+ */
+public class Visualiseur {
+
+	/**
+	 * 
+	 */
+	public Visualiseur() {
+		JMenuBar menu = new JMenuBar();
+		menu.setVisible(true);
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		Visualiseur visu = new Visualiseur();
+	}
+
+}
