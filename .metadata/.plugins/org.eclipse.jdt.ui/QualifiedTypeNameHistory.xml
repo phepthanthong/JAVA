@@ -6,4 +6,5 @@
 <fullyQualifiedTypeName name="javax.swing.event.MouseInputAdapter"/>
 <fullyQualifiedTypeName name="java.util.Vector"/>
 <fullyQualifiedTypeName name="java.lang.Package"/>
+<fullyQualifiedTypeName name="java.io.File"/>
 </qualifiedTypeNameHistroy>

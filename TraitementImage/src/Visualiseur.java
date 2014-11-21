@@ -2,6 +2,7 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 
 /**
  * @author Hieu
@@ -10,20 +11,24 @@ import java.awt.event.*;
 public class Visualiseur extends JFrame {
 
 	/**
-	 * Constructeur par d�faut de la classe Visualiseur
+	 * Constructeur par défaut de la classe Visualiseur
 	 */
 	public Visualiseur() {
-		
-		this.setSize(800,500);
+		super();
+		this.setSize(this.getToolkit().getScreenSize());
 		this.setTitle("Traitement des images");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLocationRelativeTo(null);
+		this.setLocationRelativeTo(null);		
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		this.setResizable(false);
 		
-		initComponent();
+		initComponent();		
+	
+		
 	}
 	
 	/**
-	 * M�thode initComponent():
+	 * Méthode initComponent():
 	 * Assume la fonction de charger la barre de menu et la barre d'outils
 	 */
 	public void initComponent()
@@ -40,6 +45,7 @@ public class Visualiseur extends JFrame {
 				
 		JMenu fichier = new JMenu("Fichier");
 		JMenu edition = new JMenu("Edition");
+		JMenu outils = new JMenu("Outils");
 		JMenu aide = new JMenu("Aide");
 		
 		JMenuItem ouvrir = new JMenuItem("Ouvrir");
@@ -48,7 +54,7 @@ public class Visualiseur extends JFrame {
 		
 		JMenuItem copier = new JMenuItem("Copier");
 		JMenuItem coller = new JMenuItem("Coller");
-		JMenuItem outils = new JMenuItem("Outils");
+		JMenuItem test = new JMenuItem("Test");
 		
 		JMenuItem choix1 = new JMenuItem("Choix 1");
 		JMenuItem choix2 = new JMenuItem("Choix 2");
@@ -69,6 +75,10 @@ public class Visualiseur extends JFrame {
 		edition.setMnemonic('E');
 		edition.add(copier);
 		edition.add(coller);
+		edition.addSeparator();
+		outils = new JMenu("Outils");
+		outils.add(choix1);
+		outils.add(choix2);
 		edition.add(outils);
 		
 		aide.setMnemonic('A');
@@ -78,9 +88,9 @@ public class Visualiseur extends JFrame {
 			{
 				JOptionPane jop = new JOptionPane();
 				ImageIcon img = new ImageIcon("C:/Users/Hieu/Desktop/Images/future3.png");
-				String mess = "Merci d'avoir utilis� notre application !\n";
-				mess += "J'esp�re que vous avez eu de bons moments ^^ \n";
-				jop.showMessageDialog(null, mess, "� Propos", JOptionPane.INFORMATION_MESSAGE, img);
+				String mess = "Merci d'avoir utilisé notre application !\n";
+				mess += "J'espère que vous avez eu de bons moments ^^ \n";
+				jop.showMessageDialog(null, mess, "À Propos", JOptionPane.INFORMATION_MESSAGE, img);
 			}
 		});		
 		
@@ -91,6 +101,35 @@ public class Visualiseur extends JFrame {
 		this.setJMenuBar(mb);
 		this.setVisible(true);
 		this.add(tb, BorderLayout.NORTH);
+		
+		ouvrir.addActionListener(new BoutonOuvrirAction());	
+		sauvegarder.addActionListener(new BoutonSauvegarderAction());
+		
+
+		
+	}	
+	
+	class BoutonOuvrirAction implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// k cần getDource() (trả về objet của control) 
+			JFileChooser file = new JFileChooser();
+			int returnVal = file.showOpenDialog(Visualiseur.this);
+			if (returnVal == JFileChooser.APPROVE_OPTION){
+				File f = file.getSelectedFile();
+			}
+		}
+	}
+	
+	class BoutonSauvegarderAction implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e){
+			JFileChooser file = new JFileChooser();
+			int returnVal = file.showSaveDialog(Visualiseur.this);
+			if (returnVal == JFileChooser.APPROVE_OPTION){
+				
+			}
+		}
 	}
 
 	/**
@@ -98,7 +137,10 @@ public class Visualiseur extends JFrame {
 	 */
 	public static void main(String[] args) {
 		Visualiseur visu = new Visualiseur();
-		
+		/**
+		 * cố gắng mỗi lần thêm  plugin mới thì tự động menu hiện plugin đó lên, k cần vào main chỉnh sửa
+		 * => vấn đề thiết kế class
+		 */
 	}
 
 }
