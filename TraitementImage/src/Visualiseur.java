@@ -1,29 +1,41 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
+import java.awt.image.BufferedImage;
+import java.io.*;
 
 /**
  * @author Hieu
- *
+ * Cette classe modélise une application graphique de visualisation
+ * de formes. Elle dérive de JFrame, qui est une fenêtre SWING "light".
  */
 public class Visualiseur extends JFrame {
 
+	public ZoneAffichageImage m_zone;
+	
+	
 	/**
 	 * Constructeur par défaut de la classe Visualiseur
 	 */
 	public Visualiseur() {
 		super();
-		this.setSize(this.getToolkit().getScreenSize());
+		//this.setSize(this.getToolkit().getScreenSize());
+		this.setSize(800,500);
 		this.setTitle("Traitement des images");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);		
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		this.setResizable(false);
+		this.setResizable(true);
 		
 		initComponent();		
-	
+		
+		m_zone = new ZoneAffichageImage();
+		this.add(m_zone,BorderLayout.WEST);
 		
 	}
 	
@@ -32,7 +44,7 @@ public class Visualiseur extends JFrame {
 	 * Assume la fonction de charger la barre de menu et la barre d'outils
 	 */
 	public void initComponent()
-	{		
+	{	
 		JToolBar tb = new JToolBar();
 		
 		JButton b1 = new JButton(new ImageIcon("images/Select.png"));
@@ -110,18 +122,40 @@ public class Visualiseur extends JFrame {
 	}	
 	
 	class BoutonOuvrirAction implements ActionListener {
-		@Override
+
+		//@Override
+		Image img = null;
+				
 		public void actionPerformed(ActionEvent e) {
-			// k cần getDource() (trả về objet của control) 
-			JFileChooser file = new JFileChooser();
-			int returnVal = file.showOpenDialog(Visualiseur.this);
-			if (returnVal == JFileChooser.APPROVE_OPTION){
-				File f = file.getSelectedFile();
+
+			String file = getImageFile();
+			if (file != null) 
+			{
+				Toolkit kit = Toolkit.getDefaultToolkit();
+				img = kit.getImage(file);
+				img = img.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+				m_zone.repaint();
 			}
 		}
+
+		private String getImageFile() {
+			JFileChooser file = new JFileChooser();			
+			FileFilter filter = new FileNameExtensionFilter("Images", "jpg", "png");
+			file.setFileFilter(filter);
+			int returnVal = file.showOpenDialog(Visualiseur.this);
+			if (returnVal == JFileChooser.APPROVE_OPTION)
+			{
+				File f = file.getSelectedFile();
+				return f.getPath();
+			} 
+			else
+				return null;
+		}
+
 	}
 	
 	class BoutonSauvegarderAction implements ActionListener {
+				
 		@Override
 		public void actionPerformed(ActionEvent e){
 			JFileChooser file = new JFileChooser();
@@ -137,10 +171,8 @@ public class Visualiseur extends JFrame {
 	 */
 	public static void main(String[] args) {
 		Visualiseur visu = new Visualiseur();
-		/**
-		 * cố gắng mỗi lần thêm  plugin mới thì tự động menu hiện plugin đó lên, k cần vào main chỉnh sửa
-		 * => vấn đề thiết kế class
-		 */
+   
+		
 	}
 
 }

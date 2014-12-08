@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="public void actionPerformed(ActionEvent e) {" key="selection"/>
+		<list key="findhistory">
+			<item value="public void actionPerformed(ActionEvent e) {"/>
+			<item value="/*m_zone = new ZoneAffichageImage();"/>
+			<item value="//&#x09;&#x09;m_zone = new ZoneAffichageImage();"/>
+			<item value=""/>
+		</list>
+	</section>
+</section>

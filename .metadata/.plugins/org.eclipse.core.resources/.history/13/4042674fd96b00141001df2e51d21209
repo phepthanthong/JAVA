@@ -1,9 +1,0 @@
-
-/**
- * @author Hieu
- *
- */
-public class Case {
-	
-	public Case[][] m_cases = new Case[10][10];
-}

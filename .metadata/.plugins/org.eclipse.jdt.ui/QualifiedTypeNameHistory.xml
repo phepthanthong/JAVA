@@ -6,5 +6,12 @@
 <fullyQualifiedTypeName name="javax.swing.event.MouseInputAdapter"/>
 <fullyQualifiedTypeName name="java.util.Vector"/>
 <fullyQualifiedTypeName name="java.lang.Package"/>
+<fullyQualifiedTypeName name="javax.swing.filechooser.FileNameExtensionFilter"/>
+<fullyQualifiedTypeName name="java.io.FileFilter"/>
+<fullyQualifiedTypeName name="javax.swing.filechooser.FileFilter"/>
 <fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.awt.image.ImageFilter"/>
+<fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
+<fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
 </qualifiedTypeNameHistroy>
